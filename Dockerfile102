@@ -2,10 +2,9 @@ FROM openjdk
 RUN mkdir code; \
     cd code; \
     echo "Hello World" > hello-world.txt
+WORKDIR code
 RUN touch newFile.txt; \
     echo "Hello newFile" > newFile.txt
-WORKDIR code
 COPY Hello.java .
-RUN ["javac", "Hello.java"]
-RUN ["touch", "anotherFile.txt"]
+RUN javac Hello.java
 CMD java Hello && sh
